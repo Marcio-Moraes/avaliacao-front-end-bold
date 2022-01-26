@@ -38,7 +38,7 @@ setTimeout(consulta, 0);
 
 
 const consultaPlus = () => {
-    var page = 2;
+    handleContador();
     fetch(`https://frontend-intern-challenge-api.iurykrieger.vercel.app/products/?page=${page}`)
         .then(function (resultadoPlus) {
             return resultadoPlus.json();
@@ -53,8 +53,12 @@ const consultaPlus = () => {
             console.log("Deu problema!");
             console.log(error);
         });
-}
 
+}
+var page = 1;
+const handleContador = () => {
+    page = page + 1;
+}
 const listarProdutosPlus = (lista) => {
     lista.map((item, index) => {
         produtoItem = m('.div_item_produto').cloneNode(true);
@@ -71,7 +75,6 @@ const listarProdutosPlus = (lista) => {
 
 
         m('.div_produtos_plus').append(produtoItem);
-
     });
 }
 
